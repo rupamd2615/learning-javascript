@@ -1,0 +1,20 @@
+JavScript Execution Context
+-----------------------------
+JS is single threaded
+
+js ko koi bhi code dene pe, 2 cheezein banti hai 
+1. Global execution context : {} --> for node environment
+                              window obj --> for browser and so on acc to environment
+
+2. Function execution context
+3. Eval execution context
+----------------------------------------------------------------------------------
+2 phases:
+
+1. Memory creation phase
+2. Execution phase
+
+-------------------------------------------------
+
+Call Stack
+
