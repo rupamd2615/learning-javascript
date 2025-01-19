@@ -37,10 +37,32 @@ form.addEventListener('submit', function (e) {
   } else if (weight === '' || weight < 0 || isNaN(weight)) {
     results.innerHTML = `Please enter valid weight`;
   } else {
-    const bmi = (weight / ((height * height) / 1000)).toFixed(2);
+    const bmi = (weight / ((height * height) / 10000)).toFixed(2);
     // Show the result
     results.innerHTML = `<span>${bmi}</span>`;
+    if (bmi < 18.6) {
+      results.innerHTML += `,Under Weight`;
+    } else if (bmi >= 18.6 && bmi <= 24.9) {
+      results.innerHTML += `,Normal Weight`;
+    } else {
+      results.innerHTML += `,Overweight`;
+    }
   }
 });
+```
+## Project 03 : Digital Clock
 
+```javascript
+const clock = document.querySelector('#clock');
+
+setInterval(function () {
+  let date = new Date();
+  // console.log(date.toLocaleTimeString());
+  clock.innerHTML = date.toLocaleTimeString();
+}, 1000);
+```
+## Project 04 : Guess the Number
+
+```javascript
+// coming soon
 ```
