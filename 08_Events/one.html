@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body>
+    <h2>Amazing Images</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" height="200px" id="raft" src="https://images.pexels.com/photos/30286786/pexels-photo-30286786/free-photo-of-colorful-kite-in-bali-s-clear-summer-sky.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="raft"></li>
+            <li><img width="200px" height="200px" id="latte" src="https://images.pexels.com/photos/30095280/pexels-photo-30095280/free-photo-of-latte-art-in-a-cafe-setting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="latte"></li>
+            <li><img width="200px" height="200px" id="basketball" src="https://images.pexels.com/photos/30270708/pexels-photo-30270708/free-photo-of-empty-urban-basketball-and-tennis-court-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="basketball court"></li>
+            <li><img width="200px" height="200px" id="bird" src="https://images.pexels.com/photos/30309178/pexels-photo-30309178/free-photo-of-vibrant-parrot-perched-on-a-balcony-railing.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="bird"></li>
+            <li><a href="https://rupamd.framer.wiki" id="portfolio" target="_blank">Design Portfolio</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // document.getElementById('bird').onclick = () =>{
+    //     alert('Bird clicked')
+    // }
+
+    // attachEvent()
+    // jQuer - on
+
+    // type, timestamp, preventDefault
+    // target, toElement, srcElement, currentTarget
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+// ----------------------------------------------------------------------------------
+    // document.getElementById('images').addEventListener('click', (e)=>{
+    //     console.log("Clicked inside ul");
+        
+    // }, false)
+
+    // document.getElementById('bird').addEventListener('click', (e)=>{
+    //     e.stopPropagation()
+    //     console.log('bird clicked');
+    // }, false)
+
+    // true --> Event Capturing
+    // false --> Event Bubbling
+// ----------------------------------------------------------------------------------
+    document.querySelector('#portfolio').addEventListener('click', (e)=>{
+        e.preventDefault();
+        console.log("Portfolio reach failed")
+        e.stopPropagation();
+    })
+
+
+    document.querySelector('#images').addEventListener('click', (e)=>{
+        // removeIt.parentNode.removeChild(removeIt)  -- another method
+        console.log(e.target.tagName);
+        
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+        
+    })
+</script>
+</html>
