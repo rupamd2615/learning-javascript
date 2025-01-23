@@ -1,0 +1,31 @@
+JavaScript by default is --- Synchronous, Single threaded
+Execution context --- execute one line of code at a time, each operation waits for the last one to complete before executing
+
+Blocking code vs Non Blocking code
+-----------------------------------
+        |                   |
+    Blocks the             Does not block
+   flow of program         Execution
+   (read file sync)        (read file async)
+
+                JS Engine                                               Web API
+   ------------------------------------------                          ---------------------------------------
+   |   -----------     ------------------   |         call            |     DOM API                          |
+   |   |         |     |                 |--|------------------------>|     Set timeout-------> ----------   |
+   |   |         |     |                 |  |                         |     Set interval        |Register |--|------|
+   |   |         |     |                 |  |                         |     fetch()----         |call back|  |      |
+   |   |         |     |                 |  |                         |               |         ----------   |      |
+   |   |         |     |                 |  |                         |               | Promise              |      |
+   |   |Memory   |     | Call            |  |                         |               |                      |      |
+   |   |heap     |     | Stack           |  |                         ----------------|-----------------------      |
+   |   |         |     |                 |  |                                         V                             |
+   |   |         |     |                 |  |                                       -------------------------       |
+   |   |         |     |                 |  |         High Priority Queue           |                       |       |
+   |   |         |     |                 |<-|---------------------------------------|                       |       |
+   |   |         |     |                 |  |                                       -------------------------       |
+   |   -----------     ------------------   |                                                                       |
+   ------------------------------------------                                                                       |
+                               A                                                                 -----------------------------------
+                               |                                                                 |                                  |
+                               | ----------------------------------------------------------------|         Task queue               |
+                                          Add to call Stack                                      ------------------------------------
